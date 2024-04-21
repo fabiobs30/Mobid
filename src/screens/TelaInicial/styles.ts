@@ -9,10 +9,20 @@ export const Container = styled.View`
 `;
 export const Body = styled.View`
   justify-content: center;
-  height: ${RFValue(300)}px;
+ 
 `;
 export const Title = styled.Text`
   font-size: ${RFValue(25)}px;
   text-align: center;
   color: ${({theme})=> theme.colors.colorWhite};
 `;
+export const ContainerCarIcon= styled.View`
+ align-items: center;
+ `;
+export const CarIcon = styled.Image`
+ width: 40%;
+
+`
+
+  
+;

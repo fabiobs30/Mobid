@@ -1,5 +1,5 @@
 import React from 'react';
-import {Body,CarIcon,Container, Title} from './styles';
+import {Body,CarIcon,Container, ContainerCarIcon, Title} from './styles';
 import { Button, GestureResponderEvent, } from 'react-native';
 import { Text,  } from "react-native";
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +19,9 @@ export function TelaInicial() {
     <Container>
       <Body>
       <Title>Mobid</Title>
-      <CarIcon source={CarImage}/>
+      <ContainerCarIcon>
+      <CarIcon source={CarImage}resizeMode="contain"/>
+      </ContainerCarIcon>
       <Button title='Entrar' onPress={navTelaLogin}/>
 
       <Text>Cadastrar-se</Text>
