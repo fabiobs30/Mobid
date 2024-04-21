@@ -1,0 +1,92 @@
+{
+  "editor.fontSize": 14,
+       "editor.lineHeight":24,
+       "editor.fontFamily":"Fira Code",
+       "editor.fontLigatures":true,
+     
+       // Aplica linhas verticais para lembrar de quebrar linha em códigos muito grandes
+       "editor.rulers": [
+         80,
+         120
+       ],
+   
+   "[javascript]":{
+       "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      }
+     },
+     "[javascriptreact]":{
+       "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      }
+     },
+     "[typescript]":{
+       "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      },
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+     },
+     "[typescriptreact]":{
+       "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      },
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+     },
+     
+       // Aplica um sinal visual na esquerda da linha selecionada
+       "editor.renderLineHighlight":"gutter",
+     
+       // Aumenta a fonte do terminal
+       "terminal.integrated.fontSize":14,
+     
+       // Define o tema dos ícones na sidebar
+       "workbench.iconTheme": "material-icon-theme",
+       "security.workspace.trust.untrustedFiles": "newWindow",
+   
+       "material-icon-theme.folders.associations": {
+         "repositories": "app",
+         "migrations": "archive",
+         "dtos": "interface"
+    },
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Dracula",
+    "explorer.confirmDragAndDrop": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[json]": {
+      "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[python]": {
+      "editor.formatOnType": true
+    },
+    "css.lint.unknownAtRules": "ignore",
+    "files.associations": {
+      ".env*": "dotenv"
+    },
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": "keyword.other.dotenv",
+          "settings": {
+            "foreground": "#FF000000"
+          }
+        }
+      ]
+    },
+    "[html]": {
+      "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.CustomBrowser": "chrome:PrivateMode",
+    "[javascript][javascriptreact][typescript][typescriptreact]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+      }
+    },
+    "liveServer.settings.donotVerifyTags": true,
+    "eslint.codeActionsOnSave.rules": null
+}
