@@ -1,9 +1,9 @@
 import React from 'react';
-import {Body, Container} from './styles';
+import {Body, CarIcon, Container, Title} from './styles';
 import { Button, GestureResponderEvent, } from 'react-native';
 import { Text,  } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
+import CarImage from '../../assets/images/sedan.png';
 export function TelaInicial() {
   const navigation = useNavigation();
   function navTelaLogin(){ 
@@ -17,7 +17,8 @@ export function TelaInicial() {
   return (
     <Container>
       <Body>
-      <Text>Entrar</Text>
+      <Title>Mobid</Title>
+      <CarIcon source={CarImage}/>
       <Button title='Entrar' onPress={navTelaLogin}/>
 
       <Text>Cadastrar-se</Text>
