@@ -1,5 +1,5 @@
 import React from 'react';
-import {Body, CarIcon, Container, Title} from './styles';
+import {Body,Container, Title} from './styles';
 import { Button, GestureResponderEvent, } from 'react-native';
 import { Text,  } from "react-native";
 import { useNavigation } from '@react-navigation/native';
