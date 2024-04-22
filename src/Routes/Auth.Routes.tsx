@@ -2,8 +2,7 @@ import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 import { TelaInicial } from "../screens/TelaInicial";
 import { TelaLogin } from "../screens/TelaLogin";
-import { TelaCadastro } from "../screens/TelaCadastro";
-
+import TelaCadastro from "../screens/TelaCadastro";
 
 const {Navigator,Screen} = createStackNavigator();
 
