@@ -5,7 +5,7 @@ export default {
     backgroundColor: '#17161b',
     colorWhite: '#FFFFFF',
     colorBlue: '#0077FF',
-    colorInput: '#303030',
+    colorInput: '#4B4848',
     background: '#fff',
     border_tab: '#CCC',
     tabInactive: '#686c7d',
