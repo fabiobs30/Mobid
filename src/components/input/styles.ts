@@ -1,23 +1,13 @@
-import styled from "styled-components/native";
+import {RFValue} from 'react-native-responsive-fontsize';
+import styled from 'styled-components/native';
+import TextInputMask from 'react-native-text-input-mask';
 
-export const Container = styled.View`
+export const Input = styled(TextInputMask)`
+  background-color: ${({theme}) => theme.colors.colorInput};
+  color: ${({theme}) => theme.colors.colorWhite};
+  padding-left: ${RFValue(12)}px;
+  border-radius: 6px;
+  margin-bottom: ${RFValue(12)}px;
+  height: ${RFValue(50)}px;
   width: 100%;
-  height: 60px;
-  padding: 8px;
-  margin-top: 14px;
-  border-width: 1px;
-  border-color: #616161;
-  border-radius: 8px;
-  flex-direction: row;
-  align-items: center;
-`
-
-
-export const TextInput = styled.TextInput.attrs({
-  placeholderTextColor: '#9E9E9E'
-})`
-  width: 100%;
-  margin-left: 6px;
-  color: ${({theme})=> theme.colors.primary};
-  font-weight: bold;
-`
+`;
