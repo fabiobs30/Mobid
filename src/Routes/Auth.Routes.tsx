@@ -1,7 +1,7 @@
 import React from "react";
 import {createStackNavigator} from "@react-navigation/stack";
 import { TelaInicial } from "../screens/TelaInicial";
-import { TelaLogin } from "../screens/TelaLogin";
+
 import TelaCadastro from "../screens/TelaCadastroCliente";
 import TelaCadastroMotorista from "../screens/TelaCadastroMotorista";
 import { SelecionarCadastro } from "../screens/SelecionarCadastro";
@@ -15,7 +15,7 @@ export function AuthRoutes(){
     <Navigator>
       <Screen name="TelaInicial" component={TelaInicial} options={{headerShown:false}}/>
       <Screen name="TelaCadastro" component={TelaCadastro} options={{headerShown:false}}/>
-      <Screen name="TelaLogin" component={TelaLogin} options={{headerShown:false}}/>
+      
       <Screen name="InicioCliente" component={InicioCliente} options={{headerShown:false}}/>
       <Screen name="TelaCadastroCliente" component={TelaCadastroCliente} options={{headerShown:false}}/>
       <Screen name="TelaCadastroMotorista" component={TelaCadastroMotorista} options={{headerShown:false}}/>
