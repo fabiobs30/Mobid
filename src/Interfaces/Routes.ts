@@ -5,4 +5,6 @@ export type RootStackParamsList = {
   TelaCadastroMotorista: undefined;
   SelecionarCadastro: undefined;
   InicioCliente: undefined;
+  RotaCliente: undefined;
+  EstabelecerDestino: undefined;
 }

@@ -1,129 +1,102 @@
-// src/components/MapScreen.js
-/*import React, { useState, useEffect } from 'react';
-import { View, PermissionsAndroid, Platform } from 'react-native';
-import MapView, { Marker, Polyline } from 'react-native-maps';
-import Geolocation from 'react-native-geolocation-service';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import Polyline from '@mapbox/polyline';
-import { styles } from '';
+import React, { useEffect, useState } from "react";
+import { Container, TouchableOpacity } from "./styles";
+import axios from "axios";
+import { InputComponent } from "../../components/input";
+import { Alert, Platform, Text } from "react-native";
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import Geolocation from '@react-native-community/geolocation';
 
-const MapScreen = () => {
-  const [region, setRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
+interface Locais {
+  name: string;
+  vicinity: string;
+  rating: number;
+  user_ratings_total:number;
+  opening_hours?:{open_now:boolean};  
+}
 
-  const [destination, setDestination] = useState(null);
-  const [routeCoords, setRouteCoords] = useState([]);
-
+export function EstabelecerDestino(){
+  const [latitude, setLatitude] = useState<number|null>(null);
+  const [longitude, setLongitude] = useState<number|null>(null);
+  const [local, setLocal] = useState<string|undefined>(undefined);
+  const [locais, setLocais] = useState<Locais[]>([]);
   useEffect(() => {
-    const requestLocationPermission = async () => {
-      if (Platform.OS === 'android') {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-          {
-            title: 'Permissão de Localização',
-            message: 'Este aplicativo precisa acessar sua localização',
-            buttonNeutral: 'Pergunte-me depois',
-            buttonNegative: 'Cancelar',
-            buttonPositive: 'OK',
-          }
-        );
-        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          getCurrentLocation();
-        } else {
-          console.log('Permissão de Localização negada');
-        }
-      } else {
-        getCurrentLocation();
-      }
-    };
-
     requestLocationPermission();
   }, []);
-
-  const getCurrentLocation = () => {
+  const getLocation = () => {
     Geolocation.getCurrentPosition(
-      (position) => {
-        setRegion({
-          ...region,
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
+      position => {
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
       },
-      (error) => {
-        console.log(error.code, error.message);
+      error => {
+        Alert.alert(
+          'Erro',
+          'Não foi possível obter a sua localização. Verifique as configurações do GPS.',
+        );
+        console.error(error);
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+      {enableHighAccuracy: true, timeout: 12000, maximumAge: 1000},
     );
   };
-
-  const handlePlaceSelect = async (data, details) => {
-    const {
-      geometry: { location },
-    } = details;
-    const dest = {
-      latitude: location.lat,
-      longitude: location.lng,
-      title: data.description,
-    };
-    setDestination(dest);
-    const route = await getDirections(region, dest);
-    setRouteCoords(route);
-  };
-
-  const getDirections = async (start, end) => {
+  const requestLocationPermission = async () => {
     try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${start.latitude},${start.longitude}&destination=${end.latitude},${end.longitude}&key=SUA_API_KEY_GOOGLE_DIRECTIONS`
+      const status = await check(
+        Platform.OS === 'ios'
+          ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+          : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       );
-      const json = await response.json();
-      const points = Polyline.decode(json.routes[0].overview_polyline.points);
-      const coords = points.map(point => {
-        return {
-          latitude: point[0],
-          longitude: point[1]
-        };
-      });
-      return coords;
+
+      if (status === RESULTS.GRANTED) {
+        getLocation();
+      } else {
+        const result = await request(
+          Platform.OS === 'ios'
+            ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+            : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
+        );
+
+        if (result === RESULTS.GRANTED) {
+          getLocation();
+        } else {
+          Alert.alert(
+            'Permissão de Localização Negada',
+            'A permissão para acessar a localização foi negada. Por favor, permita o acesso nas configurações do dispositivo.',
+          );
+        }
+      }
     } catch (error) {
-      console.error(error);
-      return [];
+      console.error('Erro ao solicitar permissão de localização:', error);
     }
   };
-
-  return (
-    <View style={styles.container}>
-      <MapView style={styles.map} region={region}>
-        <Marker coordinate={region} title="Minha Localização" />
-        {destination && (
-          <Marker
-            coordinate={{
-              latitude: destination.latitude,
-              longitude: destination.longitude,
-            }}
-            title={destination.title}
-          />
-        )}
-        {routeCoords.length > 0 && <Polyline coordinates={routeCoords} />}
-      </MapView>
-      <GooglePlacesAutocomplete
-        placeholder="Para onde?"
-        onPress={handlePlaceSelect}
-        query={{
-          key: 'SUA_API_KEY_GOOGLE_PLACES',
-          language: 'pt',
-        }}
-        styles={{
-          container: styles.autocompleteContainer,
-          listView: styles.listView,
-        }}
-      />
-    </View>
-  );
-};
-
-export default MapScreen;
-*/
+  const location = async () => {
+    if(latitude && longitude && local){
+      try {
+        const response = await axios.get("https://maps.googleapis.com/maps/api/place/nearbysearch/json",
+          {
+            params:{
+              location: `${latitude},${longitude}`, 
+              radius: 2000000,
+              keyword: local, key:"AIzaSyDlMAyleZW_XoPxeDhdw9_RJr8aHRauab4",
+            }
+          }
+        );
+        setLocais(
+          response.data.results
+        );
+        console.log(response.data.resolts);
+        console.log("latitude",latitude,"longitude",longitude,"local",local);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  } 
+  return(
+    <Container>
+      <InputComponent
+      onChangeText={setLocal} value={local} placeholder="local" placeholderTextColor={"silver"}/>
+      <TouchableOpacity onPress={location}>
+        <Text>toa</Text>
+      </TouchableOpacity>
+    </Container>
+  )
+}

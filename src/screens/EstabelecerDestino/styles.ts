@@ -1,22 +1,11 @@
-// src/styles/styles.js
-/*
-import { StyleSheet } from 'react-native';
+import styled from "styled-components/native";
 
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  autocompleteContainer: {
-    position: 'absolute',
-    top: 10,
-    left: 10,
-    right: 10,
-  },
-  listView: {
-    backgroundColor: 'white',
-  },
-});
-*/
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({theme})=> theme.colors.primary};
+
+`;
+
+export const TouchableOpacity = styled.TouchableOpacity`
+ background-color: red;
+`;
