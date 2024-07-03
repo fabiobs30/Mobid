@@ -12,10 +12,7 @@ export const Container = styled.View`
   justify-content: center;
   background-color: ${({theme})=> theme.colors.colorWhite};
 `;
-export const Input = styled.TextInput`
-  font-size: ${RFValue(20)}px;
-  color: black;
-`;
+
 
 export const Header = styled.View`
   margin-top: ${getStatusBarHeight(true)}px;
@@ -43,14 +40,9 @@ export const Subtitle = styled.Text`
 
 `;
 
-export const ContentPrimeiro = styled.View`
-  width: 100%;
-  align-items: last baseline;
-  border-color: ${({theme})=> theme.colors.colorBlack};
-  border-radius: 20px;
-  border-width: ${RFValue(2)}px;
-  justify-content: space-between;
-  margin-top: ${RFValue(20)}px;
+export const ContainerInput = styled.View`
+width: 100%;
+margin-top: ${RFValue(10)}px;
 `;
 
 export const Content = styled.View`
