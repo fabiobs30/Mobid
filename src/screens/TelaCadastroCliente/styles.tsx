@@ -13,6 +13,12 @@ export const Container = styled.View`
     margin-top: ${RFValue(10)}px;
 `;
 
+export const Title = styled.Text`
+  font-size: ${RFValue(30)}px;
+  text-align: center;
+  color: ${({theme})=> theme.colors.colorWhite};
+`;
+
 export const TouchableOpacity = styled.TouchableOpacity`
   border-radius: 15px;
   align-items: center;

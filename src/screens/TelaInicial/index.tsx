@@ -1,7 +1,7 @@
 import React from 'react';
-import {Body, Buttom, ButtonCadastrar, ButtonEntrar, Buttons, CarIcon,Container, ContainerCarIcon, Subtitle, Title} from './styles';
+import {Buttom, ButtonCadastrar, ButtonEntrar, Buttons, CarIcon,Container, ContainerCarIcon, Subtitle, Title} from './styles';
 import { useNavigation } from '@react-navigation/native';
-
+import CarImage from '../../assets/imagens/sedan.png';
 
 export function TelaInicial() {
   const navigation = useNavigation();
@@ -15,16 +15,15 @@ export function TelaInicial() {
 
   return (
     <Container>
-      <Body>
-        <Title>Mobid</Title>
-        <ContainerCarIcon>
-        
-        </ContainerCarIcon>
-        
-        <Subtitle>Tudo ao seu alcance</Subtitle>
-      </Body>  
+      <Title>Mobid</Title>
+      <ContainerCarIcon>
+      <CarIcon source={CarImage}resizeMode="contain"/>
+      </ContainerCarIcon>
+      
+      <Subtitle>Tudo ao seu alcance</Subtitle>
+      
       <Buttons>
-        <Buttom onPress={navTelaLogin}><ButtonEntrar >Entrar</ButtonEntrar></Buttom>
+      <Buttom onPress={navTelaLogin}><ButtonEntrar >Entrar</ButtonEntrar></Buttom>
         <Buttom onPress={navSelecionarCadastro}><ButtonCadastrar>Cadastrar-se</ButtonCadastrar></Buttom>
       </Buttons>
     </Container>
