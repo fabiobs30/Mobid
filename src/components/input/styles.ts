@@ -3,11 +3,9 @@ import styled from 'styled-components/native';
 import TextInputMask from 'react-native-text-input-mask';
 
 export const Input = styled(TextInputMask)`
-  background-color: ${({theme}) => theme.colors.colorInput};
-  color: ${({theme}) => theme.colors.colorWhite};
-  padding-left: ${RFValue(12)}px;
-  border-radius: 6px;
-  margin-bottom: ${RFValue(12)}px;
-  height: ${RFValue(50)}px;
-  width: 100%;
+  font-size: ${RFValue(20)}px;
+  color: black;
+  background-color: ${({theme}) => theme.colors.colorWhite};
+  border: solid 1px black;
+  border-radius: 10px;
 `;
