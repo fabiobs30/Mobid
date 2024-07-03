@@ -22,7 +22,7 @@ export function EstabelecerDestino(){
   useEffect(() => {
     requestLocationPermission();
   }, []);
-  const getLocation = () => {
+  const getMyLocation = () => {
     Geolocation.getCurrentPosition(
       position => {
         setLatitude(position.coords.latitude);
@@ -47,7 +47,7 @@ export function EstabelecerDestino(){
       );
 
       if (status === RESULTS.GRANTED) {
-        getLocation();
+        getMyLocation();
       } else {
         const result = await request(
           Platform.OS === 'ios'
@@ -56,7 +56,7 @@ export function EstabelecerDestino(){
         );
 
         if (result === RESULTS.GRANTED) {
-          getLocation();
+          getMyLocation();
         } else {
           Alert.alert(
             'Permissão de Localização Negada',
@@ -83,7 +83,7 @@ export function EstabelecerDestino(){
         setLocais(
           response.data.results
         );
-        console.log(response.data.resolts);
+        console.log(response.data.results);
         console.log("latitude",latitude,"longitude",longitude,"local",local);
       } catch (error) {
         console.error(error);
