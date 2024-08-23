@@ -2,9 +2,11 @@ import React from 'react';
 import {Buttom, ButtonCadastrar, ButtonEntrar, Buttons, CarIcon,Container, ContainerCarIcon, Subtitle, Title} from './styles';
 import { useNavigation } from '@react-navigation/native';
 import CarImage from '../../assets/imagens/sedan.png';
+import { useAuth } from '../../Hooks/Auth';
 
 export function TelaInicial() {
   const navigation = useNavigation();
+  const{cliente}=useAuth()
   function navTelaLogin(){ 
     navigation.navigate('TelaLogin');
   } 

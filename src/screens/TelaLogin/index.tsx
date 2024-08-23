@@ -12,13 +12,34 @@ import {
 } from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {InputComponent} from '../../components/input';
+import { useAuth } from '../../Hooks/Auth';
+import { Alert } from 'react-native';
 
 export function TelaLogin() {
+  const {signIn} = useAuth();
   const [Email, SetEmail] = useState('');
   const [Senha, SetSenha] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
   const navigation = useNavigation();
   function navEstabelecerDestino() {
     navigation.navigate('EstabelecerDestino');
+  }
+  const handlelogin = () => {
+    signIn({
+      email:Email,
+      senha:Senha
+    }).catch(_error => {
+      setShowAlert(true);
+    });
+  };
+  if (showAlert === true) {
+    Alert.alert(
+      'Erro de autenticação',
+      'Login ou senha incorretos. Por favor, tente novamente.',
+      [
+        {text: 'OK', onPress: () => setShowAlert(false)}, // O botão "OK" fecha o alerta
+      ],
+    );
   }
   return (
     <Container>
@@ -45,8 +66,8 @@ export function TelaLogin() {
         />
       </ContainerInput>
       <View>
-        <Button>
-          <TextButton onPress={navEstabelecerDestino}>Entrar</TextButton>
+        <Button onPress={handlelogin}>
+          <TextButton>Entrar</TextButton>
         </Button>
       </View>
     </Container>

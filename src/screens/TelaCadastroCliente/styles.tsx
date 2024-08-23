@@ -25,8 +25,8 @@ export const TouchableOpacity = styled.TouchableOpacity`
   justify-content: center;
   background-color: ${({theme})=> theme.colors.primary};
   margin-bottom:  ${RFValue(60)}px;
-  width: 90%;
-  height: ${RFValue(40)}px;
+  width: 100%;
+  height: ${RFValue(50)}px;
   margin-top: ${RFValue(10)}px;
 `;
 

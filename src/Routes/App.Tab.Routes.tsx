@@ -1,10 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import {Inicio} from '../screens/InicioCliente';
+import {InicioCliente} from '../screens/InicioCliente';
 import {Viagens} from '../screens/Viagens';
 import {Conta} from '../screens/Conta';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
+import { EstabelecerDestino } from '../screens/EstabelecerDestino';
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
@@ -35,7 +36,7 @@ export function AppTabNav() {
     })}>
       <Screen
         name="Inicio"
-        component={Inicio}
+        component={InicioCliente}
         options={{
           tabBarLabel: 'Página Inicial',
 
@@ -63,6 +64,10 @@ export function AppTabNav() {
             Contas(focused, size, color),
         }}
       />
+      <Screen
+      name="EstabelecerDestino" 
+      component={EstabelecerDestino} 
+      options={{headerShown:false}}/>
     </Navigator>
   )
 }

@@ -7,4 +7,6 @@ export type RootStackParamsList = {
   InicioCliente: undefined;
   RotaCliente: undefined;
   EstabelecerDestino: undefined;
-}
+  MapaTela: {origem: any,destino:any};
+  MapaMotorista:{origem:any}
+};
