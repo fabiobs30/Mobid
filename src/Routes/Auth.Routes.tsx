@@ -21,7 +21,7 @@ export function AuthRoutes(){
       <Screen name="TelaCadastroCliente" component={TelaCadastroCliente} options={{headerShown:false}}/>
       <Screen name="TelaCadastroMotorista" component={TelaCadastroMotorista} options={{headerShown:false}}/>
       <Screen name="SelecionarCadastro" component={SelecionarCadastro} options={{headerShown:false}}/>
-      <Screen name="EstabelecerDestino" component={EstabelecerDestino} options={{headerShown:false}}/>
+      
     </Navigator>
   )
 }

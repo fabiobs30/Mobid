@@ -38,61 +38,61 @@ export default function TelaCadastroMotorista() {
       <InputComponent
         onChangeText={text => setNome(text)}
         value={nome}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Nome:"
       />
       <InputComponent
         onChangeText={text => setCpf(text)}
         value={cpf}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="CPF:"
       />
       <InputComponent
         onChangeText={text => setRG(text)}
         value={rg}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="RG:"
       />
       <InputComponent
         onChangeText={text => setSexo(text)}
         value={sexo}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Sexo:"
       />
       <InputComponent
         onChangeText={text => setNomeMae(text)}
         value={nome_mae}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Nome da Mãe:"
       />
       <InputComponent
         onChangeText={text => setEndereco(text)}
         value={endereco}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Endereço:"
       />
       <InputComponent
         onChangeText={text => setTelefone(text)}
         value={telefone}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Telefone:"
       />
       <InputComponent
         onChangeText={text => setDt_nascimento(text)}
         value={dt_nascimento}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Data de Nascimento:"
       />
       <InputComponent
         onChangeText={text => setSenha(text)}
         value={senha}
-        placeholderTextColor={'white'}
+        placeholderTextColor={'black'}
         placeholder="Senha:"
       />
       <InputComponent
       onChangeText={text => setFoto(text)}
       value={foto}
-      placeholderTextColor={'white'}
+      placeholderTextColor={'black'}
       placeholder="Foto:"
       />
       

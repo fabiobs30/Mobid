@@ -8,4 +8,6 @@ export const Input = styled(TextInputMask)`
   background-color: ${({theme}) => theme.colors.colorWhite};
   border: solid 1px black;
   border-radius: 10px;
+  width: 100%;
+  margin-bottom:10px;
 `;
