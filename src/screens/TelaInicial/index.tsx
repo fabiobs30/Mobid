@@ -6,9 +6,8 @@ import { useAuth } from '../../Hooks/Auth';
 
 export function TelaInicial() {
   const navigation = useNavigation();
-  const{cliente}=useAuth()
   function navTelaLogin(){ 
-    navigation.navigate('TelaLogin');
+    navigation.navigate('SelecionarLogin');
   } 
 
   function navSelecionarCadastro(){

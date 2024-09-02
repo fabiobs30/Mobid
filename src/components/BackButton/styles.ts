@@ -8,7 +8,7 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const IconBack = styled(Ionicons)`
-  color: ${({theme}) => theme.colors.colorWhite};
+  color: ${({theme}) => theme.colors.backgroundColor};
   font-size: ${RFValue(30)}px;
   justify-content: flex-start;
 `;

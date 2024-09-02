@@ -1,9 +1,11 @@
 export type RootStackParamsList = {
   TelaCadastroCliente: undefined;
   TelaInicial: undefined;
-  TelaLogin: undefined;
+  TelaLoginCliente: undefined;
+  TelaLoginMotorista:undefined;
   TelaCadastroMotorista: undefined;
   SelecionarCadastro: undefined;
+  SelecionarLogin:undefined;
   InicioCliente: undefined;
   RotaCliente: undefined;
   EstabelecerDestino: undefined;

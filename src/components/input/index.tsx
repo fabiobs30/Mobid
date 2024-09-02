@@ -1,7 +1,44 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Input} from './styles';
-import {TextInputProps} from 'react-native';
+import {TextInputMaskProps} from 'react-native-text-input-mask';
 
-export function InputComponent({...rest}: TextInputProps) {
-  return <Input {...rest} />;
+interface InputMaskProps extends TextInputMaskProps {
+  isFocused: boolean;
+  showModels?: () => void;
+}
+
+export function InputComponent({
+  isFocused,
+  showModels,
+  ...rest
+}: InputMaskProps) {
+  const [focusedInputId, setFocusedInputId] = useState<number | null>(null);
+  const [inputId, setInputId] = useState<number>(0);
+
+  useEffect(() => {
+    // Gerar um novo ID único apenas durante a montagem do componente
+    const newInputId = inputId + 1; // Incrementa o inputId
+    setInputId(newInputId); // Atualiza o estado do inputId
+  }, []); // Executa apenas uma vez durante a montagem do componente
+
+  const handleFocus = () => {
+    setFocusedInputId(inputId);
+    if (showModels) {
+      showModels();
+    }
+  };
+
+  const handleBlur = () => {
+    setFocusedInputId(null);
+  };
+
+  return (
+    <Input
+      {...rest}
+      isFocused={isFocused && inputId === focusedInputId}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      inputId={inputId} // Passa o inputId gerado para o componente Input
+    />
+  );
 }
