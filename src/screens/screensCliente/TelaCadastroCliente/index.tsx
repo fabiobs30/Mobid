@@ -20,14 +20,15 @@ export default function TelaCadastroCliente() {
   const mes = cleanedText.substring(2, 4);
   const ano = cleanedText.substring(4, 8);
 
-  const novaData = new Date(
-    parseInt(ano, 10),
-    parseInt(mes, 10) - 1,
-    parseInt(dia, 10),
-  );
-
-  const dataFormatada = format(novaData, 'yyyy-MM-dd');
+ 
   const fetchProfileData = async () => {
+    const novaData = new Date(
+      parseInt(ano, 10),
+      parseInt(mes, 10) - 1,
+      parseInt(dia, 10),
+    );
+  
+    const dataFormatada = format(novaData, 'yyyy-MM-dd');
     try {
       const response = await api.post("/api/clientes",{
         nome:nome,
