@@ -3,13 +3,13 @@ import { SelecionarCadastroLogin } from "../../components/SelecionarCadastroLogi
 import { useNavigation } from "@react-navigation/native";
 
 
-export function SelecionarCadastro(){
+export function SelecionarLogin(){
   const navigation = useNavigation()
   function ClienteCadastro(){
-    navigation.navigate('TelaCadastroCliente');
+    navigation.navigate('TelaLoginCliente');
   }
   function MotoristaCadastro(){
-    navigation.navigate('TelaCadastroMotorista');
+    navigation.navigate('TelaLoginMotorista');
   }
 
   return(
