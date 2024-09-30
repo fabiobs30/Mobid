@@ -45,7 +45,7 @@ export function MapaTela() {
     fetchDirections();
   }, [origem, destino]);
   useEffect(() => {
-    const ws = new WebSocket(`ws://192.168.15.39:8000/ws/cliente/${usuario.cliente_id}`);
+    const ws = new WebSocket(`ws://192.168.100.249:8000/ws/cliente/${usuario.cliente_id}`);
     websocketRef.current = ws;
   
     ws.onopen = () => {

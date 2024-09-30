@@ -32,3 +32,9 @@ export const Text = styled.Text`
   color: #ffffff;
   font-size: 20px;
 `;
+
+export const FotoCliente = styled.Image`
+  border-radius: 100px;
+  height: ${RFValue(100)}px;
+  width: ${RFValue(80)}px;
+`;
