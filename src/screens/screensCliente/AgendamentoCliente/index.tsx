@@ -1,11 +1,11 @@
 import React from "react";
 import { AgendarTitulo, Container, ContainerAgendar} from "./styles";
 
-export function Viagens(){
+export function AgendamentoCliente(){
   return(
     <Container>
       <ContainerAgendar>
-        <AgendarTitulo>Viagens
+        <AgendarTitulo>Agendamentos
 
         </AgendarTitulo>
       </ContainerAgendar>

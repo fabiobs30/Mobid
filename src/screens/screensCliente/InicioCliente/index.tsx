@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Text, TextInput } from "./styles";
+import { Container, Text} from "./styles";
 import { useAuth } from "../../../Hooks/Auth";
 
 

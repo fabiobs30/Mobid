@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {Container,Text,TouchableOpacity} from './styles';
+import {Container, Text, TouchableOpacity} from './styles';
 import {InputComponent} from '../../../components/input';
 import api from '../../../services/api';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import BackButton from '../../../components/BackButton';
 import {format} from 'date-fns';
 
@@ -15,47 +15,46 @@ export default function TelaCadastroCliente() {
   const [senha, setSenha] = useState('');
   const [dt_nascimento, setDt_nascimento] = useState('');
   const [sexo, setSexo] = useState('');
-  const cleanedText = dt_nascimento.replace(/\D/g, '');
-  const dia = cleanedText.substring(0, 2);
-  const mes = cleanedText.substring(2, 4);
-  const ano = cleanedText.substring(4, 8);
 
- 
   const fetchProfileData = async () => {
+    const cleanedText = dt_nascimento.replace(/\D/g, '');
+    const dia = cleanedText.substring(0, 2);
+    const mes = cleanedText.substring(2, 4);
+    const ano = cleanedText.substring(4, 8);
     const novaData = new Date(
       parseInt(ano, 10),
       parseInt(mes, 10) - 1,
       parseInt(dia, 10),
     );
-  
+
     const dataFormatada = format(novaData, 'yyyy-MM-dd');
     try {
-      const response = await api.post("/api/clientes",{
-        nome:nome,
-        cpf:cpf,
-        email:email,
-        senha:senha,
-        endereco:endereco,
-        telefone:telefone,
-        dt_nascimento:dataFormatada,
-        sexo:sexo})
+      const response = await api.post('/api/clientes', {
+        nome: nome,
+        cpf: cpf,
+        email: email,
+        senha: senha,
+        telefone: telefone,
+        dt_nascimento: dataFormatada,
+        sexo: sexo,
+      });
 
-      console.log('tudo certo')
+      console.log('tudo certo');
     } catch (error) {
       console.error('Erro ao obter dados do perfil:', error);
     } finally {
-      console.log('finalizar')
+      console.log('finalizar');
     }
   };
 
   const navigation = useNavigation();
-  function navTelaLogin(){ 
+  function navTelaLogin() {
     navigation.navigate('SelecionarLogin');
-  };
- 
+  }
+
   return (
     <Container>
-      <BackButton/>
+      <BackButton />
       <InputComponent
         onChangeText={text => setNome(text)}
         value={nome}
@@ -99,15 +98,15 @@ export default function TelaCadastroCliente() {
         isFocused={true}
       />
       <InputComponent
-            onChangeText={(formatted, extracted: any) => {
-              return setDt_nascimento(extracted);
-            }}
-            mask="[00]/[00]/[0000]"
-            placeholderTextColor={'silver'}
-            placeholder="Data de Nascimento (DD/MM/AAAA)"
-            keyboardType="numeric"
-            isFocused={true}
-          />
+        onChangeText={(formatted, extracted: any) => {
+          return setDt_nascimento(extracted);
+        }}
+        mask="[00]/[00]/[0000]"
+        placeholderTextColor={'silver'}
+        placeholder="Data de Nascimento (DD/MM/AAAA)"
+        keyboardType="numeric"
+        isFocused={true}
+      />
       <InputComponent
         onChangeText={text => setSenha(text)}
         value={senha}
@@ -115,10 +114,8 @@ export default function TelaCadastroCliente() {
         placeholder="Senha:"
         isFocused={true}
       />
-      <TouchableOpacity onPress={fetchProfileData} >
-        <Text onPress={navTelaLogin}>
-          Cadastrar
-        </Text>
+      <TouchableOpacity onPress={fetchProfileData}>
+        <Text >Cadastrar</Text>
       </TouchableOpacity>
     </Container>
   );
