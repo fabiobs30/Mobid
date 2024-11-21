@@ -254,7 +254,7 @@ export default function TelaCadastroMotorista() {
         onChangeText={text => setLocalidade(text)}
         value={localidade}
         placeholderTextColor={'black'}
-        placeholder="Endereço:"
+        placeholder="Localidade:"
         isFocused={true}
       />
       <InputComponent
@@ -291,8 +291,8 @@ export default function TelaCadastroMotorista() {
           return setDataNascimento(extracted);
         }}
         mask="[00]/[00]/[0000]"
-        placeholderTextColor={'silver'}
-        placeholder="Data de Nascimento (DD/MM/AAAA)"
+        placeholderTextColor={'black'}
+        placeholder="Data de Nascimento"
         keyboardType="numeric"
         isFocused={true}
       />
@@ -302,6 +302,7 @@ export default function TelaCadastroMotorista() {
         placeholderTextColor={'black'}
         placeholder="Senha:"
         isFocused={true}
+        secureTextEntry={true}
       />
 
       <FotoMotorista source={typeof foto === 'string' ? {uri: foto} : foto} />

@@ -54,6 +54,7 @@ export function TelaLoginMotorista() {
         <InputComponent
           placeholder="Email"
           keyboardType="email-address"
+          placeholderTextColor={'silver'}
           onChangeText={text => SetEmail(text)}
           value={Email}
           isFocused={true}

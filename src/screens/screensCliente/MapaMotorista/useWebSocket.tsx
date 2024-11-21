@@ -16,12 +16,12 @@ export const removeMessageHandler = (handler: MessageHandler) => {
 };
 
 const useWebSocket = () => {
-  const { cliente } = useAuth();
+  const { usuario } = useAuth();
 
   useEffect(() => {
-    if (!cliente?.cliente_id) return;
+    if (!usuario?.cliente_id) return;
 
-    const socket = new WebSocket(`ws://192.168.15.39:8000/ws/cliente/${cliente.cliente_id}`);
+    const socket = new WebSocket(`ws://192.168.101.4:8000/ws/cliente/${usuario.cliente_id}`);
 
     socket.onmessage = (event: WebSocketMessageEvent) => {
       // Supondo que a mensagem recebida seja uma string JSON
@@ -33,7 +33,7 @@ const useWebSocket = () => {
     return () => {
       socket.close();
     };
-  }, [cliente?.cliente_id]);
+  }, [usuario?.cliente_id]);
 };
 
 export default useWebSocket;
