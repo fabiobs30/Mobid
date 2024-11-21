@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {AppTabNavCliente} from './App.Tab.Routes.Cliente';
 import { MapaTela } from "../../screens/screensCliente/MapaSolicitacao";
 import  MapaMotorista  from "../../screens/screensCliente/MapaMotorista";
+import Agendar from "../../screens/screensCliente/Agendar";
 
 const Stack = createStackNavigator();
 export function AppRoutes(){
@@ -24,6 +25,11 @@ export function AppRoutes(){
         options={{headerShown: false}}
       />
       
+      <Stack.Screen
+        name="Agendar"
+        component={Agendar}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   )
 }

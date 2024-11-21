@@ -24,7 +24,7 @@ export function TelaInicial() {
       <Subtitle>Tudo ao seu alcance</Subtitle>
       
       <Buttons>
-      <Buttom onPress={navTelaLogin}><ButtonEntrar >Entrar</ButtonEntrar></Buttom>
+        <Buttom onPress={navTelaLogin}><ButtonEntrar >Entrar</ButtonEntrar></Buttom>
         <Buttom onPress={navSelecionarCadastro}><ButtonCadastrar>Cadastrar-se</ButtonCadastrar></Buttom>
       </Buttons>
     </Container>
