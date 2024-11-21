@@ -71,7 +71,7 @@ export function AppTabNavCliente() {
             }}
           />
           <Screen
-            name="Agendar"
+            name="AgendamentoCliente"
             component={AgendamentoCliente}
             options={{
               tabBarLabel: 'Agendamento',
