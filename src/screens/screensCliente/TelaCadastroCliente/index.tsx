@@ -21,7 +21,6 @@ AWS.config.update({
   secretAccessKey: AWS_SECRET_ACCESS_KEY,
   region: 'us-east-1',
 });
-
 export default function TelaCadastroCliente() {
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
