@@ -37,7 +37,7 @@ export default function TelaCadastroCliente() {
   const [localidade, setLocalidade] = useState('');
   const [uf, setUf] = useState('');
 
-  const fetchProfileData = async () => {
+  const fetchProfileData = async (foto:string) => {
     const cleanedText = dt_nascimento.replace(/\D/g, '');
     const dia = cleanedText.substring(0, 2);
     const mes = cleanedText.substring(2, 4);
@@ -63,7 +63,7 @@ export default function TelaCadastroCliente() {
         telefone,
         dt_nascimento: dataFormatada,
         sexo,
-        foto,
+        foto:foto,
       });
 
       console.log('Cadastro realizado com sucesso');
@@ -148,30 +148,9 @@ export default function TelaCadastroCliente() {
       }
 
       if (result.assets && result.assets.length > 0) {
-        const {uri, fileName} = result.assets[0];  
+        const {uri} = result.assets[0];  
         if (uri) {
-          const uniqueFileName = `${Date.now()}_${fileName}`;
-          const fileData = await RNFS.readFile(uri, 'base64');
-          const buffer = Buffer.from(fileData, 'base64');
-
-          const s3 = new AWS.S3();
-          const params = {
-            Bucket: 'mobid',
-            Key: uniqueFileName,
-            Body: buffer,
-            ContentType: result.assets[0].type,
-          };
-
-          s3.upload(params, (err: any, data: any) => {
-
-            if (err) {
-              console.log('Erro ao fazer upload da imagem:', err);
-              Alert.alert('Erro', 'Não foi possível fazer upload da imagem.');
-              return;
-            }
-            console.log('Upload realizado com sucesso:', data.Location);
-            setFoto(data.Location);
-          });
+          setFoto(uri)
         }
       }
     } catch (error) {
@@ -185,6 +164,50 @@ export default function TelaCadastroCliente() {
   function navTelaLogin() {
     navigation.navigate('SelecionarLogin');
   }
+
+  const uploadImagesToS3 = async () => {
+    try {
+      // Função para ler e preparar o upload de uma imagem para o S3
+      const uploadImage = async (uri: string) => {
+        const fileData = await RNFS.readFile(uri, 'base64');
+        const buffer = Buffer.from(fileData, 'base64');
+        const fileName = uri.split('/').pop() || `${Date.now()}.jpg`;
+
+        const s3 = new AWS.S3();
+        const params = {
+          Bucket: 'mobid',
+          Key: fileName,
+          Body: buffer,
+          ContentType: 'image/jpeg',
+        };
+
+        return new Promise((resolve, reject) => {
+          s3.upload(params, (err: any, data: any) => {
+            if (err) {
+              console.log('Erro ao fazer upload da imagem:', err);
+              reject(err);
+            } else {
+              console.log('Upload realizado com sucesso:', data.Location);
+              resolve(data.Location);
+            }
+          });
+        });
+      };
+
+      // Executando os uploads em paralelo
+      const [fotoUsuario] = (await Promise.all([
+        uploadImage(foto),
+
+      ])) as [string];
+
+      // Após ambos os uploads serem concluídos, registrar a guia
+      await fetchProfileData(fotoUsuario);
+      Alert.alert('Sucesso', 'Guia registrada com sucesso!');
+    } catch (error) {
+      console.error('Erro ao fazer upload das imagens:', error);
+      Alert.alert('Erro', 'Não foi possível fazer upload das imagens.');
+    }
+  };
 
   return (
     <Container>
@@ -282,7 +305,7 @@ export default function TelaCadastroCliente() {
       <TouchableOpacity onPress={tirarFoto}>
         <Text>Tirar foto</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={fetchProfileData}>
+      <TouchableOpacity onPress={uploadImagesToS3}>
         <Text>Cadastrar</Text>
       </TouchableOpacity>
     </Container>
