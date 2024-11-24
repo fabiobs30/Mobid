@@ -1,12 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { InicioCliente } from '../../screens/screensCliente/InicioCliente';
-import { Viagens } from '../../screens/Viagens';
-import { ContaCliente } from '../../screens/screensCliente/ContaCliente';
+import { InicioCliente } from '../screens/screensCliente/InicioCliente';
+import { Viagens } from '../screens/Viagens';
+import { ContaCliente } from '../screens/screensCliente/ContaCliente';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from 'styled-components';
-import { EstabelecerDestino } from '../../screens/screensCliente/EstabelecerDestino';
-import { AgendamentoCliente } from '../../screens/screensCliente/AgendamentoCliente';
-import { useAuth } from '../../Hooks/Auth';
+import { EstabelecerDestino } from '../screens/screensCliente/EstabelecerDestino';
+import { AgendamentoCliente } from '../screens/screensCliente/AgendamentoCliente';
+import { useAuth } from '../Hooks/Auth';
+import { AgendamentoMotorista } from '../screens/screensMotorista/AgendamentoMotorista';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -89,6 +90,16 @@ export function AppTabNavCliente() {
         />
         </>
       ) : (
+        
+      <>
+      <Screen
+        name="AgendamentoMotorista"
+        component={AgendamentoMotorista}
+        options={{
+          tabBarLabel: 'Agendamento',
+          tabBarIcon: ({ size, color, focused }) => Agendamento(focused, size, color),
+        }}
+      />
         <Screen
           name="EstabelecerDestino"
           component={EstabelecerDestino}
@@ -98,6 +109,8 @@ export function AppTabNavCliente() {
               <Ionicons name={focused ? 'map' : 'map-outline'} size={size} color={color} />,
           }}
         />
+        
+      </>
       )}
     </Navigator>
   );

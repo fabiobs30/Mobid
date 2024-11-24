@@ -1,6 +1,6 @@
 import React from "react";
 import {createStackNavigator} from '@react-navigation/stack';
-import {AppTabNavCliente} from './App.Tab.Routes.Cliente';
+import {AppTabNavCliente} from '../App.Tab.Routes';
 import { MapaTela } from "../../screens/screensCliente/MapaSolicitacao";
 import  MapaMotorista  from "../../screens/screensCliente/MapaMotorista";
 import Agendar from "../../screens/screensCliente/Agendar";
