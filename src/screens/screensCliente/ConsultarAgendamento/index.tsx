@@ -73,7 +73,6 @@ export function ConsultarAgendamento(){
 
   <Container>
     <ContainerAgendamentosPendentes>
-      
       <FlatList
       data={agendamentosPendentes}
       ListHeaderComponent={
