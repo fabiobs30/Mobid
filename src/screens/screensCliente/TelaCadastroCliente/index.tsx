@@ -65,7 +65,8 @@ export default function TelaCadastroCliente() {
         foto:foto,
       });
 
-      console.log('Cadastro realizado com sucesso');
+      console.log('Cadastro realizado com sucesso',response.data);
+      Alert.alert(response.data)
 
       navigation.navigate('TelaLoginCliente');
     } catch (error) {
@@ -201,7 +202,7 @@ export default function TelaCadastroCliente() {
 
       // Após ambos os uploads serem concluídos, registrar a guia
       await fetchProfileData(fotoUsuario);
-      Alert.alert('Sucesso', 'Guia registrada com sucesso!');
+      Alert.alert('Sucesso', 'Usuario registrado com sucesso!');
     } catch (error) {
       console.error('Erro ao fazer upload das imagens:', error);
       Alert.alert('Erro', 'Não foi possível fazer upload das imagens.');

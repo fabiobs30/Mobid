@@ -4,6 +4,7 @@ import {AppTabNavCliente} from './App.Tab.Routes.Cliente';
 import { MapaTela } from "../../screens/screensCliente/MapaSolicitacao";
 import  MapaMotorista  from "../../screens/screensCliente/MapaMotorista";
 import Agendar from "../../screens/screensCliente/Agendar";
+import { ConsultarAgendamento } from "../../screens/screensCliente/ConsultarAgendamento";
 
 const Stack = createStackNavigator();
 export function AppRoutes(){
@@ -28,6 +29,11 @@ export function AppRoutes(){
       <Stack.Screen
         name="Agendar"
         component={Agendar}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ConsultarAgendamento"
+        component={ConsultarAgendamento}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

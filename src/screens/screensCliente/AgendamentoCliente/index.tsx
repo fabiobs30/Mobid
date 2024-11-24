@@ -10,15 +10,19 @@ export function AgendamentoCliente(){
   } 
 
   function navVerificarAgendamento(){
-    navigation.navigate('SelecionarCadastro');
+    navigation.navigate('ConsultarAgendamento');
   }
 
   return(
     <Container>
       <ContainerAgendar>
         <AgendarTitulo>Agendamentos</AgendarTitulo>
-        <Buttom onPress={navAgendamento}><ButtonEntrar >Agendar</ButtonEntrar></Buttom>
-        <Buttom onPress={navVerificarAgendamento}><ButtonCadastrar>Consultar Agendamento</ButtonCadastrar></Buttom>
+        <Buttom onPress={navAgendamento}>
+          <ButtonEntrar >Agendar</ButtonEntrar>
+          </Buttom>
+        <Buttom onPress={navVerificarAgendamento}>
+          <ButtonCadastrar>Meus Agendamentos</ButtonCadastrar>
+          </Buttom>
       </ContainerAgendar>
     </Container>
   )

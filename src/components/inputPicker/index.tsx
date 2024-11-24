@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {PickerContainer, dropDownPickerStyles} from './style';
+import {ActivityIndicator, Text, View} from 'react-native';
 
 interface InputPickerProps {
   items: {label: string; value: any}[];
@@ -9,6 +10,8 @@ interface InputPickerProps {
   onOpen?: () => void;
   onClose?: () => void;
   itemKey?: string;
+  loading?: boolean; // Nova propriedade para exibir o indicador de carregamento
+  emptyMessage?: string; // Mensagem personalizada para lista vazia
 }
 
 const InputPicker: React.FC<InputPickerProps> = ({
@@ -18,11 +21,23 @@ const InputPicker: React.FC<InputPickerProps> = ({
   onOpen,
   onClose,
   itemKey,
+  loading = false,
+  emptyMessage
 }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
 
-  const borderColor = open ? '#934dd2' : 'gray';
+  const borderColor = open ? '#335076' : 'gray';
+
+  const ListEmptyComponent = () => (
+    <View style={{padding: 10, alignItems: 'center'}}>
+      {loading ? (
+        <ActivityIndicator size="large" color="#335076" />
+      ) : (
+        <Text style={{color: '#FFFFFF', fontSize: 14}}>{emptyMessage}</Text>
+      )}
+    </View>
+  );
 
   return (
     <PickerContainer>
@@ -65,6 +80,7 @@ const InputPicker: React.FC<InputPickerProps> = ({
         selectedItemContainerStyle={
           dropDownPickerStyles.selectedItemContainerStyle
         }
+        ListEmptyComponent={ListEmptyComponent} // Adicionado componente para lista vazia
       />
     </PickerContainer>
   );
