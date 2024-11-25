@@ -8,7 +8,6 @@ export function AgendamentoMotorista(){
     navigation.navigate('Agendar');
     console.log("fui")
   } 
-
   function navVerificarAgendamento(){
     navigation.navigate('ConsultarAgendamento');
   }
