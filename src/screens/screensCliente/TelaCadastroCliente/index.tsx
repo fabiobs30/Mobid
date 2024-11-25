@@ -330,6 +330,7 @@ export default function TelaCadastroCliente() {
         placeholderTextColor={'black'}
         placeholder="CPF:"
         isFocused={true}
+        maxLength={11}
       />
       <InputPicker
         items={Sexos}
@@ -391,6 +392,7 @@ export default function TelaCadastroCliente() {
         placeholderTextColor={'black'}
         placeholder="Telefone:"
         isFocused={true}
+        maxLength={11}
       />
       <InputComponent
         onChangeText={(formatted, extracted: any) => {

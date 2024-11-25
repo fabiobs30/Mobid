@@ -331,7 +331,8 @@ export default function TelaCadastroMotorista() {
         value={cpf}
         placeholderTextColor={'black'}
         placeholder="CPF:"
-        isFocused={true}
+        isFocused={true} 
+        maxLength={11}
       />
       <InputComponent
         onChangeText={text => setRG(text)}
@@ -339,6 +340,7 @@ export default function TelaCadastroMotorista() {
         placeholderTextColor={'black'}
         placeholder="RG:"
         isFocused={true}
+        maxLength={9}
       />
       <InputPicker
         items={Sexos}
@@ -398,6 +400,7 @@ export default function TelaCadastroMotorista() {
         placeholderTextColor={'black'}
         placeholder="Telefone:"
         isFocused={true}
+        maxLength={11}
       />
       <InputComponent
         onChangeText={text => setEmail(text)}
