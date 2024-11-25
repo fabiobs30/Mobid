@@ -175,7 +175,6 @@ export default function TelaCadastroMotorista() {
         const fileData = await RNFS.readFile(uri, 'base64');
         const buffer = Buffer.from(fileData, 'base64');
         const fileName = uri.split('/').pop() || `${Date.now()}.jpg`;
-
         const s3 = new AWS.S3();
         const params = {
           Bucket: 'mobid',
