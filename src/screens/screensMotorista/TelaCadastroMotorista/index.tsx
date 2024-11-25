@@ -84,10 +84,28 @@ export default function TelaCadastroMotorista() {
     );
 
     const dataFormatada = format(novaData, 'yyyy-MM-dd');
+    console.log({
+      nome: nome,
+      cpf: cpf,
+      email: email,
+      senha: senha,
+      cep: cep,
+      logradouro: logradouro,
+      bairro: bairro,
+      localidade: localidade,
+      uf: uf,
+      telefone: telefone,
+      dt_nascimento: dataFormatada,
+      sexo: sexo,
+      foto: foto
+  });
     try {
-      const response = await api.post('/api/cliente', {
+      const response = await api.post('/api/motorista', {
         nome,
         cpf,
+        nome_mae,
+        cnh,
+        rg,
         email,
         senha,
         cep,
@@ -100,7 +118,7 @@ export default function TelaCadastroMotorista() {
         sexo,
         foto: foto,
       });
-
+      
       Alert.alert('Sucesso', 'Usuario registrado com sucesso!');
 
       navTelaLogin();
