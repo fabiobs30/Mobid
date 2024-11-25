@@ -34,7 +34,7 @@ const InputPicker: React.FC<InputPickerProps> = ({
       {loading ? (
         <ActivityIndicator size="large" color="#335076" />
       ) : (
-        <Text style={{color: '#FFFFFF', fontSize: 14}}>{emptyMessage}</Text>
+        <Text style={{color: '#000', fontSize: 20}}>{emptyMessage}</Text>
       )}
     </View>
   );

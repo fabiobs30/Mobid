@@ -3,15 +3,6 @@ module.exports = {
   extends: '@react-native',
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
-  settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {},
-    },
-    'import/ignore': ['react-native', 'react-native-reanimated'],
-  },
   rules: {
     'no-console': 'off',
     'prettier/prettier': [
@@ -23,7 +14,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['.ts', '.tsx'],
+      files: ['*.ts', '*.tsx'],
       rules: {
         'react-hooks/exhaustive-deps': 'off',
         'no-sequences': 'off',

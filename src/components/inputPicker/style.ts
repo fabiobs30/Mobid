@@ -7,30 +7,30 @@ export const PickerContainer = styled.View`
 
 export const dropDownPickerStyles = {
   containerStyle: {
-    backgroundColor: 'rgba(48,48,48,0.5)',
+    backgroundColor: '#FFFFFF',
     height: RFValue(50),
     borderWidth: 2,
     borderColor: 'gray',
-    borderRadius: RFValue(18),
-    paddingLeft: RFValue(14),
+    borderRadius: RFValue(10),
+    paddingLeft: RFValue(1),
     zIndex: 5,
   },
   dropDownContainerStyle: {
-    backgroundColor: 'rgba(48,48,48,1)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 2,
     borderColor: 'gray',
     borderRadius: RFValue(18),
     zIndex: 10,
   },
   textStyle: {
-    color: '#FFFFFF',
-    fontSize: RFValue(14),
+    color: '#000',
+    fontSize: RFValue(20),
   },
   placeholderStyle: {
-    color: 'silver',
-    fontSize: RFValue(14),
+    color: '#000',
+    fontSize: RFValue(20),
   },
   selectedItemContainerStyle: {
-    backgroundColor: '#934dd2',
+    backgroundColor: '#335076',
   },
 };
