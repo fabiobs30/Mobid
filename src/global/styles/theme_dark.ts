@@ -6,6 +6,7 @@ export default {
     colorWhite: '#FFFFFF',
     colorBlue: '#0077FF',
     colorInput: '#303030',
+    colorBlack:'#000',
     background: '#fff',
     border_tab: '#CCC',
     tabInactive: '#686c7d',

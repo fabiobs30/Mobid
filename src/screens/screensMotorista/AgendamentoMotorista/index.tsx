@@ -5,11 +5,10 @@ import { useNavigation } from "@react-navigation/native";
 export function AgendamentoMotorista(){
   const navigation = useNavigation();
   function navAgendamento(){ 
-    navigation.navigate('Agendar');
-    console.log("fui")
+    navigation.navigate('AgendarMotorista');
   } 
   function navVerificarAgendamento(){
-    navigation.navigate('ConsultarAgendamento');
+    navigation.navigate('ConsultarAgendamentoMotorista');
   }
 
   return(

@@ -12,7 +12,7 @@ export const dropDownPickerStyles = {
     borderWidth: 2,
     borderColor: 'gray',
     borderRadius: RFValue(10),
-    paddingLeft: RFValue(1),
+    paddingLeft: RFValue(5),
     zIndex: 5,
   },
   dropDownContainerStyle: {

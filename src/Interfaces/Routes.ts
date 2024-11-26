@@ -12,5 +12,8 @@ export type RootStackParamsList = {
   MapaTela: {origem: any,destino:any};
   MapaMotorista:{origem:any}
   Agendar: undefined;
+  AgendamentoMotorista:undefined;
   ConsultarAgendamento:undefined;
+  AgendarMotorista:undefined;
+  ConsultarAgendamentoMotorista:undefined
 };
